@@ -11,7 +11,7 @@ average_write = (df[['writing score']].mean()).to_string(index=False)
 unique_value = list(df['parental level of education'].unique())
 
 ragav ={
-    "edcation_level":unique_value,
+    "education_level":unique_value,
     "scores" : {
         "average":{
             "math_score":average_math,
