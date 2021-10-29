@@ -12,7 +12,7 @@ unique_value = list(df['parental level of education'].unique())
 
 ragav ={
     "edcation_level":unique_value,
-    "scroes" : {
+    "scores" : {
         "average":{
             "math_score":average_math,
             "reading_score":average_read,
