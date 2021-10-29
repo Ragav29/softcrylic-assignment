@@ -1,13 +1,27 @@
-
 import pandas as pd
-#To read csv file I used pandas library.
-#To parse the data in csv file (pd.read_csv) is used. 
- 
-df = pd.read_csv("StudentsPerformance.csv")
-#Data in csv file are fetched to dataframe(df).
- 
-df = df.head()
-#head() returns gest of dataframe(df).
+import json
 
-df.to_json("StudentsPerformance_summary")
-#dataframe(df) is converted into json.
+#reding the csv file
+df = pd.read_csv("StudentsPerformance.csv")
+#calculation of averages
+average_math = (df[['math score']].mean()).to_string(index=False)
+average_read = (df[['reading score']].mean()).to_string(index=False)
+average_write = (df[['writing score']].mean()).to_string(index=False)
+#education value list
+unique_value = list(df['parental level of education'].unique())
+
+ragav ={
+    "edcation_level":unique_value,
+    "scroes" : {
+        "average":{
+            "math_score":average_math,
+            "reading_score":average_read,
+            "writing_score":average_write
+        }
+    }
+}
+
+with open("students_performance_summary.json","w") as json_file:
+    json.dump(ragav,json_file)
+
+
